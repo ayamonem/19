@@ -1,11 +1,19 @@
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404
 from .models import Post
+from .form import PostForm
 # Create your views here.
 
 # we will create CRUD(Create ,Retreve,Update,Delete)
 def post_create(request):
-	return HttpResponse("<h1>Create</h1>")
+	forms = PostForm(request.POST or None)
+	if forms.is_valid():
+		instance = forms.save(commit=False)
+		print forms.cleaned_data.get("title")
+		instance.save()
+
+	context={"form":forms,}
+	return render(request, "post_form.html", context)
 
 def post_detail(request,id=None):#for retreve
 	instance=get_object_or_404(Post,id=id)
