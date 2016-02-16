@@ -1,0 +1,7 @@
+cd Desktop
+virtualenv venv   //this creat virtual  enviroment
+cd venv
+.\Scripts\activate  //then we activate this  enviromnt
+pip install django  //install django on enviroment
+
+

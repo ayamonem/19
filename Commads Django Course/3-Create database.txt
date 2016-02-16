@@ -1,0 +1,4 @@
+cd src
+python manage.py migrate auth
+python manage.py migrate --run-syncdb
+python manage.py createsuperuser    //then create username and password usimng this link http://127.0.0.1:8000/admin/

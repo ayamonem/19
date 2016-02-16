@@ -1,0 +1,6 @@
+cd Desktop
+cd venv
+.\Scripts\activate
+.\Scripts\django-admin.exe startproject test_project    //this create new project
+cd src
+python manage.py runserver     //this make u be able to test your work on server
