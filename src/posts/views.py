@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Post
 # Create your views here.
 
 # we will create CRUD(Create ,Retreve,Update,Delete)
@@ -12,7 +12,8 @@ def post_detail(request):#for retreve
 	return render(request, "index.html", context) #we are calling template --> {} from settings file 
 
 def post_list(request):#for list items
-	context={"title":"List"}
+	queryset = Post.objects.all()
+	context={"title":"List","object_list":queryset}
 	return render(request, "index.html", context) #we are calling template --> {} from settings file 
 
 def post_update(request):
