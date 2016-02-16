@@ -10,6 +10,7 @@ from .views import ( #more shortcuts for easy coding
 urlpatterns = [
 	url(r'^$', post_list),
     url(r'^create/$', post_create),
+    url(r'^list/$', post_list),
     url(r'^detail/$', post_detail),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
