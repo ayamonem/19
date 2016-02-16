@@ -10,7 +10,7 @@ class Post(models.Model):
 	content = models.TextField()
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
+# U can see more  Fields in this link https://docs.djangoproject.com/en/1.9/ref/models/fields/
 	def __unicode__(self):
 		return self.title
 
