@@ -1,0 +1,13 @@
+
+1- // adding these lines to settings.py
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+2- create static folder  in src folder,and static_cdn in virtual enviroment folder called 19
+3- run command:
+python manage.py collectstatic
