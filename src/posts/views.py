@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
 from .models import Post
 from .form import PostForm
@@ -9,8 +9,9 @@ def post_create(request):
 	forms = PostForm(request.POST or None)
 	if forms.is_valid():
 		instance = forms.save(commit=False)
-		print forms.cleaned_data.get("title")
 		instance.save()
+		# message success
+		return HttpResponseRedirect(instance.get_absolute_url())
 
 	context={"form":forms,}
 	return render(request, "post_form.html", context)
@@ -25,7 +26,16 @@ def post_list(request):#for list items
 	context={"title":"List","object_list":queryset}
 	return render(request, "index.html", context) #we are calling template --> {} from settings file 
 
-def post_update(request):
-	return HttpResponse("<h1>Update</h1>")
+def post_update(request,id=None):
+	instance=get_object_or_404(Post,id=id)
+	forms = PostForm(request.POST or None,instance=instance)
+	if forms.is_valid():
+		instance = forms.save(commit=False)
+		instance.save()
+		# message success
+		return HttpResponseRedirect(instance.get_absolute_url())
+	context={"form":forms,}
+	return render(request, "post_form.html", context)
+
 def post_delete(request):
 	return HttpResponse("<h1>Delete</h1>")
