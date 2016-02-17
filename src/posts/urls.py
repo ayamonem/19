@@ -8,11 +8,10 @@ from .views import ( #more shortcuts for easy coding
 	post_delete,
 	)# u can finad more regular expresions examples here https://github.com/codingforentrepreneurs/Guides/blob/master/all/common_url_regex.md
 urlpatterns = [
-	url(r'^$', post_list),
+	url(r'^$', post_list,name="list"),
     url(r'^create/$', post_create),
     url(r'^list/$', post_list),
     url(r'^(?P<id>\d+)/$', post_detail,name="detail"),
     url(r'^(?P<id>\d+)/edit/$', post_update,name="update"),
-    url(r'^delete/$', post_delete),
-
+    url(r'^(?P<id>\d+)/delete/$', post_delete),
 ]
