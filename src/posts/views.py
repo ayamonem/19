@@ -29,7 +29,7 @@ def post_detail(request,id=None):#for retreve
 def post_list(request):#for list items
 	queryset = Post.objects.all()
 	context={"title":"List","object_list":queryset}
-	return render(request, "index.html", context) #we are calling template --> {} from settings file 
+	return render(request, "post_list.html", context) #we are calling template --> {} from settings file 
 
 def post_update(request,id=None):
 	instance=get_object_or_404(Post,id=id)
@@ -42,7 +42,7 @@ def post_update(request,id=None):
 		return HttpResponseRedirect(instance.get_absolute_url())
 	context={"form":forms,}
 	return render(request, "post_form.html", context)
-	
+
 def post_delete(request, id=None):
 	instance = get_object_or_404(Post, id=id)
 	instance.delete()
